@@ -1,0 +1,377 @@
+#:kivy 1.9.2
+<MainWid>:
+    canvas:
+        Color:
+            rgb: 1,1,1 
+        Rectangle:
+            pos: self.pos
+            size: self.size
+#----------------------------------------------------------------------------
+<StartWid>:
+    orientation: 'vertical'
+    padding: 15
+    spacing: 15
+    canvas:
+        Color:
+            rgb: .3,.3,.9 #azul
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source:"img/Logo2.png"
+        size_hint_y: 0.2
+        allow_stretch: True
+    BoxLayout:
+        size_hint_y: .01
+    Button:
+        size_hint_y: .24
+        background_normal : 'img/botonSOS.png'
+        on_press: root.m_SOS()
+    BoxLayout:
+        size_hint_y: .01       
+    Button:
+        size_hint_y: .24
+        #text: 'INICIO SECCION'
+        background_normal : 'img/botonINICIO.png'
+        on_press: root.inicio_seccion()
+    BoxLayout:
+        size_hint_y: .01        
+    Button:
+        size_hint_y: .24
+        #text: 'REGISTRO'
+        background_normal : 'img/botonREGISTRO.png'
+        on_press: root.inicio_registro()                
+    BoxLayout:
+        size_hint_y: .05
+#----------------------------------------------------------------------------
+<SosWid>:
+    orientation: 'vertical'
+    padding: 15
+    spacing: 15
+    canvas:
+        Color:
+            rgb: .7,.2,.3        #168,50,70 (rojo)  se dividen por 255
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source:"img/Logo2.png"
+        size_hint_y: 0.2
+        allow_stretch: True
+    BoxLayout:
+        size_hint_y: .05
+    Button:
+        size_hint_y: .25
+        background_normal : 'img/botonRCP.png' #primeros auxilios
+        on_press: root.P_aux()
+
+    BoxLayout:
+        size_hint_y: .05       
+    Button:
+        size_hint_y: .25
+        background_normal : 'img/botonRSV.png' #Ruta Salvavidas
+        on_press: root.Ruta_SV()
+
+    Button:
+        size_hint: .2, .1  # x, Y
+        background_normal : 'img/Regreso4.png'
+        on_press: root.m_INICIO()          
+
+#----------------------------------------------------------------------------
+<IniSecWid>:
+    orientation: 'vertical'
+    padding: 15
+    spacing: 15    
+    canvas:
+        Color:
+            rgb: 0.2,0.66,0.64
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source:"img/IniciarSesion.png"
+        size_hint_y: 3
+        allow_stretch: True
+    LeftLabel: # ---------- Correo
+        #text: ' correo:'
+    TextInput:
+        id: ti_correo
+        multiline: False
+        hint_text: 'correo'
+    LeftLabel: # ---------- Contraseña
+        #text: ' Contraseña:'
+    TextInput:
+        id: ti_contrasena
+        multiline: False
+        hint_text: 'Contraseña'
+          
+    BoxLayout:
+        size_hint_y: 3
+    BoxLayout: # ---------- Crear Salir
+        Button:
+            text: 'Iniciar'
+            on_press: root.Eventos()
+        Button:
+            text: 'Salir'
+            on_press: root.m_INICIO()  
+
+      
+
+<LeftLabel@Label>:
+    text_size: self.size
+    halign: 'left'
+#----------------------------------------------------------------------------
+<IniRegWid>:
+    orientation: 'vertical'
+    canvas:
+        Color:
+            rgb: 0.2,0.66,0.64
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source:"img/Registro.png"
+        size_hint_y: 2
+        allow_stretch: True
+    LeftLabel: # ---------- Nombre
+        #text: ' Nombre:'
+    TextInput:
+        id: ti_nombre
+        multiline: False
+        hint_text: 'Nombre'
+    LeftLabel: # ---------- Telefono
+        #text: ' Telefono:'
+    TextInput:
+        id: ti_telefono
+        multiline: False
+        hint_text: 'Telefono'
+    LeftLabel: # ---------- EPS
+        #text: ' EPS:'
+    TextInput:
+        id: ti_EPS
+        multiline: False
+        hint_text: 'EPS'
+    LeftLabel: # ---------- Rh
+        #text: ' Rh:'
+    TextInput:
+        id: ti_RH
+        multiline: False
+        hint_text: 'Rh'
+    LeftLabel:  # ---------- Contacto de emergencia
+        #text: ' Contacto de emergencia:'
+    TextInput:
+        id: ti_C_emergencia
+        multiline: False
+        hint_text: 'Contacto de emergencia'
+    LeftLabel:  # ---------- numero de emergencia
+        #text: ' numero de emergencia:'
+    TextInput:
+        id: ti_C_emergencia
+        multiline: False
+        hint_text: 'numero de emergencia'        
+    LeftLabel:  # ---------- Correo
+        #text: ' Correo:'
+    TextInput:
+        id: ti_Correo
+        multiline: False
+        hint_text: 'Correo'
+    LeftLabel:  # ---------- contraseña
+        #text: ' contraseña:'
+    TextInput:
+        id: ti_contrasena
+        multiline: False
+        hint_text: 'contraseña'          
+    BoxLayout:
+        size_hint_y: 2
+    BoxLayout: # ---------- Crear Salir
+        Button:
+            text: 'Crear'
+            on_press: root.create_database()
+            #on_press: root.insert_data()
+        Button:
+            text: 'Salir'
+            on_press: root.m_INICIO()  
+#----------------------------------------------------------------------------
+<PriAuxWid>:
+    orientation: 'vertical'
+    #padding: 15
+    #spacing: 15
+    canvas:
+        Color:
+            rgb: .7,.2,.3        #168,50,70 (rojo)  se dividen por 255
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ScrollView:
+        size: self.size
+        Image:
+            #size_hint: (None, None)
+            keep_ratio: True
+            source:"img/S20.png"
+            size_hint_y: 2
+            allow_stretch: True
+
+    Button:
+        size_hint: .2, .1  # x, Y
+        background_normal : 'img/Regreso4.png'
+        on_press: root.m_INICIO()              
+#----------------------------------------------------------------------------
+<RutaSv_Wid>:
+    orientation: 'vertical'
+    #padding: 15
+    #spacing: 15
+    canvas:
+        Color:
+            rgb: .7,.2,.3        #168,50,70 (rojo)  se dividen por 255
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ScrollView:
+        size: self.size
+        Image:
+            #size_hint: (None, None)
+            keep_ratio: True
+            source:"img/S7.png"
+            size_hint_y: 1
+            allow_stretch: True
+
+    Button:
+        size_hint: .2, .1  # x, Y
+        background_normal : 'img/Regreso4.png'
+        on_press: root.m_INICIO()   
+#----------------------------------------------------------------------------
+<EventoWid>:
+    orientation: 'vertical'
+    padding: 15
+    spacing: 15
+    canvas:
+        Color:
+            rgb: .7,.2,.3        #168,50,70 (rojo)  se dividen por 255
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        size_hint_y: .05
+    Button:
+        size_hint_y: .25
+        background_normal : 'img/addEvent.png' #Agregar evento
+        on_press: root.add_Evento()
+
+    BoxLayout:
+        size_hint_y: .05       
+    Button:
+        size_hint_y: .25
+        background_normal : 'img/Consulta.png' #Consultar
+        on_press: root.consulta()
+
+    BoxLayout:
+        size_hint_y: .05       
+    Button:
+        size_hint_y: .25
+        background_normal : 'img/Historial.png' #Historial
+        on_press: root.historia()        
+
+    Button:
+        size_hint: .2, .1  # x, Y
+        background_normal : 'img/Regreso4.png'
+        on_press: root.m_INICIO()   
+#----------------------------------------------------------------------------
+<addEventoWid>:
+    orientation: 'vertical'
+    padding: 5
+    spacing: 5    
+    canvas:
+        Color:
+            rgb: 0.2,0.66,0.64
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source:"img/Registro.png"
+        size_hint_y: 3
+        allow_stretch: True
+    LeftLabel: # ---------- Nombre
+        #text: ' Nombre:'
+    TextInput:
+        id: ti_nombreEV
+        multiline: False
+        hint_text: 'Nombre *'
+    LeftLabel: # ---------- Lugar
+        #text: ' Lugar:'
+    TextInput:
+        id: ti_Lugar
+        multiline: False
+        hint_text: 'Lugar*'
+    LeftLabel: # ---------- Fecha:
+        #text: ' Fecha:'
+    TextInput:
+        id: ti_fecha
+        multiline: False
+        hint_text: 'dd/mm/aa*'
+    LeftLabel: # ---------- Especie:
+        #text: ' Especie:'
+    TextInput:
+        id: ti_fecha
+        multiline: False
+        hint_text: 'Especie'        
+
+    BoxLayout:
+        size_hint_y: 3
+    BoxLayout: # ---------- Crear Salir
+        Button:
+            text: 'Agregar'
+            #on_press: root.Eventos()    
+        Button:
+            text: 'Salir'
+            on_press: root.m_INICIO()  
+
+#----------------------------------------------------------------------------
+<ConsultaWid>:
+    orientation: 'vertical'
+    #padding: 15
+    #spacing: 15
+    canvas:
+        Color:
+            rgb: .7,.2,.3        #168,50,70 (rojo)  se dividen por 255
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ScrollView:
+        size: self.size
+        Image:
+            #size_hint: (None, None)
+            keep_ratio: True
+            source:"img/S6.png"
+            size_hint_y: 1
+            allow_stretch: True
+
+    Button:
+        size_hint: .2, .1  # x, Y
+        background_normal : 'img/Regreso4.png'
+        on_press: root.m_INICIO()   
+
+#----------------------------------------------------------------------------
+<HistorialWid>:
+    orientation: 'vertical'
+    #padding: 15
+    #spacing: 15
+    canvas:
+        Color:
+            rgb: .7,.2,.3        #168,50,70 (rojo)  se dividen por 255
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ScrollView:
+        size: self.size
+        Image:
+            #size_hint: (None, None)
+            keep_ratio: True
+            source:"img/S5.png"
+            size_hint_y: 1
+            allow_stretch: True
+
+    Button:
+        size_hint: .2, .1  # x, Y
+        background_normal : 'img/Regreso4.png'
+        on_press: root.m_INICIO()           
+
